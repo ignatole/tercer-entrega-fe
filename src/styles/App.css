@@ -23,6 +23,16 @@
   transition: transform 0.6s ease, filter 0.6s ease, opacity 0.6s ease, margin-left 0.28s ease;
 }
 
+/* When the portal is open, apply a subtle transform/blur to the page content for a smooth transition */
+body.portal-open .app-content {
+  transition: transform var(--portal-duration, 600ms) cubic-bezier(.2,.9,.3,1),
+              filter var(--portal-duration, 600ms) ease,
+              opacity var(--portal-duration, 600ms) ease;
+  transform: scale(0.986) translateY(6px);
+  filter: blur(4px) brightness(0.9);
+  opacity: 0.94;
+}
+
 /* When collapsed, allow the body class to shift content */
 body.sidebar-collapsed .app-content {
   margin-left: var(--sidebar-collapsed-width);
@@ -81,11 +91,39 @@ button:hover {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px) brightness(0.9);
+  -webkit-backdrop-filter: blur(6px) brightness(0.9);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 2000;
+}
+
+.portal-message {
+  position: fixed;
+  top: 18vh;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #bfffe6;
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: 0.6px;
+  text-transform: none;
+  text-align: center;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.12));
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6), 0 2px 6px rgba(0,255,160,0.06) inset;
+  backdrop-filter: blur(4px);
+  animation: portal-message-in 420ms cubic-bezier(.2,.9,.3,1);
+  z-index: 2100;
+}
+
+@keyframes portal-message-in {
+  0% { opacity: 0; transform: translateX(-50%) translateY(-8px) scale(0.98); }
+  60% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1.02); }
+  100% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
 }
 
 .portal {
@@ -179,15 +217,15 @@ button:hover {
 }
 
 
-/* Media Queries para ajustar el margen del contenido */
+
 @media (max-width: 768px) {
   .app-content {
-    margin-left: 60px; /* Ancho de la sidebar en tablets */
+    margin-left: 60px; 
   }
 }
 
 @media (max-width: 600px) {
   .app-content {
-    margin-left: 50px; /* Ancho de la sidebar en móviles */
+    margin-left: 50px; 
   }
 }

@@ -57,6 +57,28 @@ const Portal = ({ open = false, duration = 1500 }) => {
     };
   }, [open, duration]);
 
+  // while portal is open, add a body class so the page behind can animate smoothly
+  useEffect(() => {
+    try {
+      if (open) {
+        document.body.classList.add('portal-open');
+        document.body.style.setProperty('--portal-duration', `${duration}ms`);
+      } else {
+        document.body.classList.remove('portal-open');
+        document.body.style.removeProperty('--portal-duration');
+      }
+    } catch (err) {
+      // ignore (safety for SSR or restricted envs)
+    }
+
+    return () => {
+      try {
+        document.body.classList.remove('portal-open');
+        document.body.style.removeProperty('--portal-duration');
+      } catch { void 0; }
+    };
+  }, [open, duration]);
+
   if (!open) return null;
 
   return (
