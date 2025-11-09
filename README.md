@@ -146,9 +146,11 @@ La segunda entrega tenía un enlace simple de GitHub sin animaciones, solo con t
 La tercera entrega incluye un botón interactivo con múltiples animaciones que proporcionan feedback visual claro al usuario, mejorando la experiencia de interacción.
 
 **Captura de pantalla - Antes:**
+
 ![Redes Sociales - Antes](./public/assets/mejoras/redes-sociales-antes.gif)
 
 **Captura de pantalla - Después:**
+
 ![Redes Sociales - Después](./public/assets/mejoras/redes-sociales-despues.gif)
 
 ---
@@ -171,9 +173,11 @@ La segunda entrega tenía transiciones básicas en las tarjetas sin optimizació
 La tercera entrega presenta tarjetas con animaciones fluidas y profesionales que mejoran la percepción de calidad de la interfaz.
 
 **Captura de pantalla - Antes:**
+
 ![Cards - Antes](./public/assets/mejoras/cards-antes.gif)
 
 **Captura de pantalla - Después:**
+
 ![Cards - Después](./public/assets/mejoras/cards-despues.gif)
 
 ---
